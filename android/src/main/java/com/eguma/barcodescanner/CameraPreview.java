@@ -45,6 +45,16 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     public void startCamera() {
         mCamera = mCameraManager.getCamera(mCameraType);
+		// set focus area
+		Camera.Parameters parameters = mCamera.getParameters();
+		//parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+		android.graphics.Rect focusArea = new android.graphics.Rect();		
+		focusArea.set(-1000, -1000, 1000, -500);
+		java.util.ArrayList<Camera.Area> focusAreas = new java.util.ArrayList<Camera.Area>(1);
+		focusAreas.add(new Camera.Area(focusArea, 1000));			
+		parameters.setFocusAreas(focusAreas);
+		mCamera.setParameters(parameters);
+		//
         startCameraPreview();
     }
 
@@ -67,6 +77,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                 mCamera.setPreviewDisplay(getHolder());
                 mCamera.setDisplayOrientation(getDisplayOrientation());
                 mCamera.setPreviewCallback(mPreviewCallback);
+				
+				
+				
                 mCamera.startPreview();
                 if(mAutoFocus) {
                     if (mSurfaceCreated) { // check if surface created before using autofocus
@@ -122,6 +135,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     public void safeAutoFocus() {
         try {
+			
             mCamera.autoFocus(autoFocusCB);
         } catch (RuntimeException re) {
             // Horrible hack to deal with autofocus errors on Sony devices
