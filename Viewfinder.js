@@ -1,13 +1,13 @@
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
+import React, {  Component } from 'react';
+
 import {
   ActivityIndicator,
   Platform,
   StyleSheet,
   View,
 } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 class Viewfinder extends Component {
   constructor(props) {

@@ -1,14 +1,14 @@
 'use strict';
 
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
+import React, {  Component } from 'react';
+
 import {
   requireNativeComponent,
   StyleSheet,
   View,
 } from 'react-native';
+
+import PropTypes from 'prop-types';
 
 import Viewfinder from './Viewfinder';
 
@@ -65,8 +65,6 @@ BarcodeScannerView.propTypes = {
   viewFinderBorderWidth: PropTypes.number,
   viewFinderBorderLength: PropTypes.number,
   viewFinderShowLoadingIndicator: PropTypes.bool,
-  viewFinderHeight: PropTypes.number,
-  viewFinderWidth: PropTypes.number,
 };
 
 BarcodeScannerView.defaultProps = {
