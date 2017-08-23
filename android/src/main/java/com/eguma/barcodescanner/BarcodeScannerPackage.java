@@ -16,13 +16,8 @@ public class BarcodeScannerPackage implements ReactPackage {
             ReactApplicationContext reactContext) {
         return Collections.emptyList();
     }
-
-    @Override
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
-    }
-
-    @Override
+	
+    @Override	
     public List<ViewManager> createViewManagers(
             ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
