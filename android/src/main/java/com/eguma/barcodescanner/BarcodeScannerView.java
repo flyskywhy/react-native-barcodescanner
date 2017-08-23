@@ -1,5 +1,7 @@
 package com.eguma.barcodescanner;
 
+import java.util.Arrays;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -78,7 +80,11 @@ public class BarcodeScannerView extends FrameLayout implements Camera.PreviewCal
             }
 
             Result rawResult = null;
-            PlanarYUVLuminanceSource source = new PlanarYUVLuminanceSource(data, width, height, 0, 0, width, height, false);
+			
+			int cropHeight = 200;
+			cropHeight = cropHeight > height ? height : cropHeight;
+			
+			PlanarYUVLuminanceSource source = new PlanarYUVLuminanceSource(data, width, height, 0, 0, width, cropHeight, false);
 
             if (source != null) {
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
